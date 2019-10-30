@@ -1,0 +1,26 @@
+[
+  {
+    "bild": "sdflvkj34r",
+    "kategorie": "dynamisch",
+    "text": "Bern",
+    "version": 1.1
+  },
+  {
+    "bild": "string",
+    "kategorie": "statisch",
+    "text": "Zürich",
+    "version": 1.1
+  },
+  {
+    "bild": "asdjfweoiur23",
+    "kategorie": "statisch",
+    "text": "Achtung Stau",
+    "version": 1.1
+  },
+  {
+    "bild": "-",
+    "kategorie": "dynamisch",
+    "text": "Basel",
+    "version": 1.2
+  }
+]

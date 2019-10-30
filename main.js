@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const axios = require('axios');
+const fs = require('fs');
 var express = require('express');
 process.env.BACKEND_URL = 'http://localhost:8080'
 const URL_AUTHENTICATE = `${process.env.BACKEND_URL}/api/authentication/login`;
@@ -16,13 +17,21 @@ const authObject = {
 
 let token;
 
+const setup = JSON.parse(fs.readFileSync('db_test_setup.json'));
+
 
 async function main() {
     await auth();
     console.log(await get('/api/vcs/branch'));
+    //await test_setup(setup);
     console.log(await get('/api/vcs/branch/0/signalbild'));
 }
-
+async function test_setup(testSetup) {
+    for (obj of testSetup) {
+        console.log(JSON.stringify(obj));
+        await post('/api/vcs/branch/0/signalbild', obj);
+    }
+}
 async function auth() {
     const result = await (await fetch(URL_AUTHENTICATE,  {
         method: 'POST',
@@ -57,11 +66,10 @@ main();
 var app = express();
 
 app.use(express.static('public'));
-/*
-app.get('/', function (req, res) {
-   res.send('Hello World');
+
+app.get('/signals', async function (req, res) {
+   res.send(await get('/api/vcs/branch/0/signalbild'));
 })
-*/
 
 var server = app.listen(8081, function () {
    var host = server.address().address
@@ -69,5 +77,3 @@ var server = app.listen(8081, function () {
    
    console.log("Example app listening at http://%s:%s", host, port)
 })
-
-// headers: {Authorization: `Bearer ${token}`},
