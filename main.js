@@ -4,6 +4,8 @@ var express = require('express');
 process.env.BACKEND_URL = 'http://localhost:8080'
 const URL_AUTHENTICATE = `${process.env.BACKEND_URL}/api/authentication/login`;
 const URL_RENEWTOKEN = `${process.env.BACKEND_URL}/api/authentication/renew`;
+
+
 function url(route) {
     return process.env.BACKEND_URL + route;
 }
