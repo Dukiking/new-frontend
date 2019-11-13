@@ -1,8 +1,9 @@
+require('dotenv').config();
 const fetch = require('node-fetch');
 const axios = require('axios');
 const fs = require('fs');
 var express = require('express');
-process.env.BACKEND_URL = 'http://localhost:8080'
+
 const URL_AUTHENTICATE = `${process.env.BACKEND_URL}/api/authentication/login`;
 const URL_RENEWTOKEN = `${process.env.BACKEND_URL}/api/authentication/renew`;
 
@@ -10,9 +11,10 @@ const URL_RENEWTOKEN = `${process.env.BACKEND_URL}/api/authentication/renew`;
 function url(route) {
     return process.env.BACKEND_URL + route;
 }
+
 const authObject = {
-    username: 'admin',
-    password: 'hlFVwZLI1aqSCxl49hyY',
+    username: process.env.BACKEND_USER,
+    password: process.env.BACKEND_PW,
 }
 
 let token;
