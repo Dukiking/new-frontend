@@ -16,108 +16,108 @@
       })
     </script> -->
      <script>
-      var catAndActs = {};
-catAndActs['Classroom Instruction and Assessment'] = ['Assessment Day', 'Common Assessment Development', 'Data Team', 'Kindergarten Screening', 'Other'];
-catAndActs['Curriculum Development and Alignment'] = ['Capstone Development', 'Course Of Study Development / Revision', 'Standards Alignment / Rollout', 'Other'];
-catAndActs['District Committee'] = ['Curriculum Council', 'Grading & Assessment Task Force', 'Professional Development Planning Committee', 'Race To The Top Committee', 'Teacher Evaluation Committee', 'Other'];
-catAndActs['Meeting'] = ['Academic Support Team', 'ELL / eKLIP Teachers', 'Gifted Intervention Specialist', 'Intervention Assistance Team', 'Intervention Teachers', 'Kindergarten Parent Conference', 'KLIP Teachers', 'Title I Teachers', 'Other'];
-catAndActs['Other Category'] = ['Other'];
-catAndActs['Professional Conference'] = ['Conference'];
-catAndActs['Professional Workshop / Training'] = ['In-District', 'Out-Of-District'];
-catAndActs['Pupil Services'] = ['IEP Meeting', 'IEP Writing'];
-
-function ChangecatList() {
-    var catList = document.getElementById("validationCustom03");
-    var actList = document.getElementById("validationCustom04");
-    var selCat = catList.options[catList.selectedIndex].value;
-    while (actList.options.length) {
-        actList.remove(0);
-    }
-    var cats = catAndActs[selCat];
-    if (cats) {
-        var i;
-        for (i = 0; i < cats.length; i++) {
-            var cat = new Option(cats[i], i);
-            actList.options.add(cat);
+        let data = [];
+        function onSelected() {
+            const dropdown = document.getElementById("validationCustom03");
+            const selected = dropdown.options[dropdown.selectedIndex].value;
+            document.getElementById("bild").innerHTML = data[selected].bild;
+            document.getElementById("kategorie").innerHTML = data[selected].kategorie;
+            document.getElementById("version").innerHTML = data[selected].version;
+            document.getElementById("text").innerHTML = data[selected].text;
         }
-    }
-}
+       async function loadData() {
+         data = await (await fetch('/signals')).json();
+         console.log(JSON.stringify(data));
+         setDropdown();
+        }
+        function setDropdown() {
+          var catList = document.getElementById("validationCustom03");
+          while (catList.options.length) {
+              catList.remove(0);
+          }
+          if (data) {
+            data.forEach((val, idx) => {
+              const opt = new Option(val.text, idx);
+              catList.options.add(opt);
+            })
+          }
+        }
+        loadData();
 
       </script>
 
     <title>Signal_Mngmnt</title>
    </head>
    <body>
-   <div class="container">
-       <div class="row">
-           <div class="col-md-6 mb-3">
-               <label for="validationCustom03">Types:</label>
-               <select class="dropdown form-control form-control-lg" name="category" id="validationCustom03" onchange="ChangecatList()" required>
-                   <option class="dropdown-item" value="">Choose... </option>
-                   <option value="Classroom Instruction and Assessment">Classroom Instruction and Assessment</option>
-                   <option value="Curriculum Development and Alignment">Curriculum Development and Alignment</option>
-                   <option value="District Committee">District Committee</option>
-                   <option value="Meeting">Meeting</option>
-                   <option value="Other Category">Other Category</option>
-                   <option value="Professional Conference">Professional Conference</option>
-                   <option value="Professional Workshop / Training">Professional Workshop / Training</option>
-                   <option value="Pupil Services">Pupil Services</option>
-               </select>
-               <div class="invalid-feedback">
-                   Please provide a category.
-               </div>
-           </div>
-           <div class="col-md-6 mb-3">
-               <label for="validationCustom04">Signals: (dynamisch)</label>
-               <select class="form-control form-control-lg" id="validationCustom04" name="activity" required></select>
-               <div class="invalid-feedback">
-                   Please provide an activity.
-               </div>
-           </div>
-       </div>
-   <form>
-       <div class="input-group mb-3">
-           <div class="input-group-prepend">
-               <span class="input-group-text" id="inputGroup-sizing-default">SignalId</span>
-           </div>
-           <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly>
-       </div>
-       <div class="input-group mb-3">
-				<div class="input-group-prepend">
-					  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-				</div>
-				<input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-       </div>
-       <div class="input-group mb-3">
-           <div class="input-group-prepend">
-               <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-           </div>
-           <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-       </div>
-       <div class="input-group mb-3">
-           <div class="input-group-prepend">
-               <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-           </div>
-           <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-       </div>
 
 
-       <div class="form-group form-check">
-           <input type="checkbox" class="form-check-input" id="exampleCheck1">
-           <label class="form-check-label" for="exampleCheck1">Stromanschluss</label>
-       </div>
-       <button type="submit" class="btn btn-primary">Submit</button>
-       <button class="btn btn-secondary" type="reset"> New
-       </button>
-   </form>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Category:</label>
+            <select class="dropdown form-control form-control-lg" name="category" id="validationCustom03" onchange="onSelected()" required>
+              <option class="dropdown-item" value="">Choose... </option>
+              <option value="Classroom Instruction and Assessment">Classroom Instruction and Assessment</option>
+              <option value="Curriculum Development and Alignment">Curriculum Development and Alignment</option>
+              <option value="District Committee">District Committee</option>
+              <option value="Meeting">Meeting</option>
+              <option value="Other Category">Other Category</option>
+              <option value="Professional Conference">Professional Conference</option>
+              <option value="Professional Workshop / Training">Professional Workshop / Training</option>
+              <option value="Pupil Services">Pupil Services</option>
+            </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">Text</div>
+        <div class="col-md-6 mb-3" id="text"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">Kategorie</div>
+        <div class="col-md-6 mb-3" id="kategorie"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">Bild</div>
+        <div class="col-md-6 mb-3" id="bild"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">Verison</div>
+        <div class="col-md-6 mb-3" id="version"></div>
+      </div>
+      <form>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">SignalId</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" readonly>
+          </div>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
 
 
+          <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Stromanschluss</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button class="btn btn-secondary" type="reset"> New
+          </button>
+      </form>
 
-
-
-
-
-
-   </div>
    </body>
 </html>

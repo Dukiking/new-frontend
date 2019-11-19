@@ -1,30 +1,37 @@
+require('dotenv').config();
 const fetch = require('node-fetch');
 const axios = require('axios');
 const fs = require('fs');
 var express = require('express');
-process.env.BACKEND_URL = 'http://localhost:8080'
+
 const URL_AUTHENTICATE = `${process.env.BACKEND_URL}/api/authentication/login`;
 const URL_RENEWTOKEN = `${process.env.BACKEND_URL}/api/authentication/renew`;
-
+let token;
 
 function url(route) {
     return process.env.BACKEND_URL + route;
 }
 const authObject = {
-    username: 'admin',
-    password: 'hlFVwZLI1aqSCxl49hyY',
+    username: process.env.BACKEND_USER,
+    password: process.env.BACKEND_PW,
 }
 
-let token;
-
+// Read db setup file.
 const setup = JSON.parse(fs.readFileSync('db_test_setup.json'));
 
 
 async function main() {
+    // Authenticate as backend user.
     await auth();
-    console.log(await get('/api/vcs/branch'));
-    //await test_setup(setup);
-    console.log(await get('/api/vcs/branch/0/signalbild'));
+
+    // Fill database with test data from file, if 'setup' argument has been provided.
+    if (process.argv[2] == 'setup') {
+        console.log('Filling database with test data.');
+        await test_setup(setup);
+    }
+
+    //console.log(await get('/api/vcs/branch'));
+    //console.log(await get('/api/vcs/branch/0/signalbild'));
 }
 async function test_setup(testSetup) {
     for (obj of testSetup) {
@@ -65,12 +72,15 @@ main();
 
 var app = express();
 
+// Serve static file from 'public' folder.
 app.use(express.static('public'));
 
+// Define routes for express server.
 app.get('/signals', async function (req, res) {
    res.send(await get('/api/vcs/branch/0/signalbild'));
 })
 
+// Start the server.
 var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port
