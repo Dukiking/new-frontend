@@ -15,36 +15,7 @@
 
       })
     </script> -->
-     <script>
-        let data = [];
-        function onSelected() {
-            const dropdown = document.getElementById("validationCustom03");
-            const selected = dropdown.options[dropdown.selectedIndex].value;
-            document.getElementById("bild").innerHTML = data[selected].bild;
-            document.getElementById("kategorie").innerHTML = data[selected].kategorie;
-            document.getElementById("version").innerHTML = data[selected].version;
-            document.getElementById("text").innerHTML = data[selected].text;
-        }
-       async function loadData() {
-         data = await (await fetch('/signals')).json();
-         console.log(JSON.stringify(data));
-         setDropdown();
-        }
-        function setDropdown() {
-          var catList = document.getElementById("validationCustom03");
-          while (catList.options.length) {
-              catList.remove(0);
-          }
-          if (data) {
-            data.forEach((val, idx) => {
-              const opt = new Option(val.text, idx);
-              catList.options.add(opt);
-            })
-          }
-        }
-        loadData();
-
-      </script>
+     <script src="index.js"></script>
 
     <title>Signal_Mngmnt</title>
    </head>
@@ -100,7 +71,7 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Stromanschluss</label>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" onclick="test">Submit</button>
           <button class="btn btn-secondary" type="reset"> New
           </button>
       </form>
