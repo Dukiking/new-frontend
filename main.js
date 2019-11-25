@@ -56,6 +56,9 @@ async function get(route, body) {
 async function post(route, body) {
     return request('POST', route, body)
 }
+async function put(route, body) {
+    return request('PUT', route, body)
+}
 async function request(method, route, body) {
     const rawBody = await fetch(url(route),  {
         body: body ? JSON.stringify(body) : undefined,
@@ -73,11 +76,21 @@ main();
 var app = express();
 
 // Serve static file from 'public' folder.
+
+app.use(express.json());
 app.use(express.static('public'));
 
 // Define routes for express server.
 app.get('/signals', async function (req, res) {
    res.send(await get('/api/vcs/branch/0/signalbild'));
+})
+
+app.post('/signals', async function (req, res) {
+   res.send(await post('/api/vcs/branch/0/signalbild', req.body));
+})
+
+app.put('/signals', async function (req, res) {
+   res.send(await put(`/api/vcs/branch/0/signalbild/${req.body.id}`, req.body));
 })
 
 // Start the server.
