@@ -1,0 +1,51 @@
+body {
+    --runtime:3;
+    font-family: Helvetica;
+}
+
+#Kreuz {
+    opacity:0 ;
+    animation: pulse infinite paused
+    animationDuration: --runtime
+}
+#Pfeilunten {
+    opacity:0 ;
+    animation: pulse infinite paused
+    animationDuration: --runtime
+}
+#Pfeillink {
+    opacity:0 ;
+    animation: pulse infinite paused
+    animationDuration: --runtime
+
+}
+#Pfeilrechts {
+    opacity:0 ;
+    animation: pulse infinite paused
+    animationDuration: --runtime
+
+}
+
+@keyframes pulse {
+    0%{
+        opacity: 0
+    }
+    25%{
+        opacity: 1
+    }
+    100%{
+        opacity: 1
+    }
+}
+
+@keyframes blink {
+    0%{
+        opacity: 0
+    }
+    50%{
+        opacity: 0
+    }
+    100%{
+        opacity: 1
+    }
+}
