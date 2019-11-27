@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Frutiger';
+    src: url('Frutiger/Frutiger.ttf');
+}
+
+@font-face{
+    font-family: 'Fruitger Bold';
+    src: url('Frutiger/Frutiger_bold.ttf')
+}

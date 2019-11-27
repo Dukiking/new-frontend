@@ -16,5 +16,5 @@ shieldWidth.oninput = () => {
     const width = shieldWidth.innerHTML;
     console.log(`textfield changed and width is ${width}`);
     outerRect.setAttribute("width", width);
-    innerRect.setAttribute("Width", width-20);
+    innerRect.setAttribute("width", width-20);
 };
