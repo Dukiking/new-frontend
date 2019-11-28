@@ -3,6 +3,10 @@
   font-family: "Frutiger";
 }
 
+.leftPole {
+    color: grey;
+}
+
 @font-face {
   font-family: "Frutiger";
   src: url("../Fontkits/frutiger_bold-webfont.woff") format("woff");

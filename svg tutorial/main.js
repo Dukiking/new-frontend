@@ -13,16 +13,8 @@ shieldHeight.oninput = () => {
 };
 
 shieldWidth.oninput = () => {
-<<<<<<< HEAD
-  const width = shieldWidth.innerHTML;
-  console.log(`textfield changed and width is ${width}`);
-  outerRect.setAttribute("width", width);
-  innerRect.setAttribute("Width", width - 20);
-};
-=======
     const width = shieldWidth.innerHTML;
     console.log(`textfield changed and width is ${width}`);
     outerRect.setAttribute("width", width);
     innerRect.setAttribute("width", width-20);
 };
->>>>>>> 617eca18a0722f8f60148d9764153b7f1a7d9558
