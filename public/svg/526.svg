@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 94.893333 37.799999"
+   height="37.799999"
+   width="94.893333"
+   xml:space="preserve"
+   id="svg2"
+   version="1.1"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><g
+     transform="matrix(1.3333333,0,0,-1.3333333,0,37.8)"
+     id="g10"><g
+       transform="scale(0.1)"
+       id="g12"><path
+         id="path14"
+         style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 0,113.18 h 130.973 l -0.219,170.211 580.32,0.07 0.578,-187.629 H 546.77 v 0 c -0.071,0.7891 -0.071,1.7266 -0.149,2.4453 C 542.238,162.426 486.504,209.656 422.207,209.879 357.77,210.02 301.539,162.93 296.789,98.5625 c -0.074,-0.7891 -0.074,-1.8672 -0.148,-2.7305 v 0 H 0 v 17.348 0" /><path
+         id="path16"
+         style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 326.016,84.3789 h -17.563 v 0 c 0,4.1758 0,10.3008 0.43,14.3984 5.328,57.3167 55.082,99.3637 112.535,99.3637 57.312,0 105.625,-42.844 112.969,-99.7894 0.508,-4.0352 0.789,-9.8672 0.937,-13.9727 v 0 h -17.929 v 0 c -0.215,4.1055 -0.579,9.9375 -1.223,13.8984 -7.344,46.7267 -47.156,81.7187 -94.461,81.8637 -47.598,0.14 -88.781,-34.129 -94.898,-81.3637 -0.508,-4.0976 -0.723,-10.2226 -0.797,-14.3984 v 0" /><path
+         id="path18"
+         style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 421.633,168.113 c 46.152,0 83.738,-37.293 84.023,-83.445 C 505.871,38.0859 468.293,0 421.633,0 c -46.516,0 -84.024,38.0078 -83.805,84.5938 0.215,46.1522 37.652,83.5192 83.805,83.5192 v 0" /><path
+         id="path20"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 421.484,112.172 c 15.411,0 28.02,-12.3829 28.157,-27.7931 0.144,-15.5508 -12.383,-28.2266 -28.008,-28.293 -15.695,-0.1484 -28.508,12.5977 -28.438,28.293 0.145,15.4805 12.813,27.7931 28.289,27.7931 v 0" /></g></g></svg>

@@ -1,13 +1,45 @@
 let data = [];
-let id;
+let selectedId;
 function onSelected() {
     const dropdown = document.getElementById("validationCustom03");
-    const selected = dropdown.options[dropdown.selectedIndex].value;
-    document.getElementById("bild").innerHTML = data[selected].bild;
-    document.getElementById("kategorie").innerHTML = data[selected].kategorie;
-    document.getElementById("version").innerHTML = data[selected].version;
-    document.getElementById("text").innerHTML = data[selected].text;
-    id = data[selected].id;
+    let signs = {
+        'baustelle': 114,
+        'achtung': 130,
+        'stau': 131,
+        'aufgehoben': 258,
+        'tunnel': 407,
+    }
+    const selected = data[dropdown.options[dropdown.selectedIndex].value];
+    document.getElementById("bild").innerHTML = selected.bild;
+    document.getElementById("kategorie").innerHTML = selected.kategorie;
+    document.getElementById("version").innerHTML = selected.version;
+    document.getElementById("text").innerHTML = selected.text;
+    selectedId = selected.id;
+    console.log(`Selected id ${selectedId} with text ${selected.text}`);
+
+    switch(selected.bild) {
+        case 'limit':
+        // Get svg nr. 201 and write limit on it.
+        break;
+        case 'navsign':
+        // Draw green rect with white borders and specified text in it.
+        break;
+        default:
+        const lookup = signs[selected.bild];
+        let html = '';
+        if (lookup) {
+            html = `
+            <object
+                id="svg-object"
+                data="svg/${lookup}.svg"
+                type="image/svg+xml">
+            </object>
+            `;
+        } else {
+            console.warn(`Didn't find any graphics specification for ${selected.bild}`)
+        }
+        document.getElementById("svg-signal").innerHTML = html;
+    }
 }
 async function loadData() {
     data = await (await fetch('/signals')).json();
@@ -21,11 +53,23 @@ async function on_submit(event) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: id,
+            id: selectedId,
             version: document.getElementById("version").innerHTML,
             kategorie: document.getElementById("kategorie").innerHTML,
             bild: document.getElementById("bild").innerHTML,
             text: document.getElementById("text").innerHTML,
+        }),
+    });
+}
+async function on_delete(event) {
+    console.log('delete is called');
+    await fetch('/signals', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: selectedId,
         }),
     });
 }

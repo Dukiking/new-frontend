@@ -59,6 +59,9 @@ async function post(route, body) {
 async function put(route, body) {
     return request('PUT', route, body)
 }
+async function del(route, body) {
+    return request('DELETE', route, body)
+}
 async function request(method, route, body) {
     const rawBody = await fetch(url(route),  {
         body: body ? JSON.stringify(body) : undefined,
@@ -68,7 +71,15 @@ async function request(method, route, body) {
             'Content-Type': 'application/json'
         },
     });
-    const resObj = await rawBody.json();
+    let resObj;
+    try{
+        resObj = await rawBody.json();
+    } catch (e) {
+        // Sometimes the returned object is not a valid JSON for some reason.
+        console.log(`Got error: ${e.message}: ${e.stack}`);
+        resObj = rawBody;
+    }
+    console.log(`Request result: ${JSON.stringify(resObj)}`);
     return resObj
 }
 main();
@@ -86,11 +97,21 @@ app.get('/signals', async function (req, res) {
 })
 
 app.post('/signals', async function (req, res) {
-   res.send(await post('/api/vcs/branch/0/signalbild', req.body));
+    const updateObj = req.body;
+    console.log(`Creating new ${JSON.stringify(updateObj)}`);
+    res.send(await post('/api/vcs/branch/0/signalbild', updateObj));
 })
 
 app.put('/signals', async function (req, res) {
-   res.send(await put(`/api/vcs/branch/0/signalbild/${req.body.id}`, req.body));
+    const updateObj = req.body;
+    console.log(`Updating ${updateObj.id} with ${JSON.stringify(updateObj)}`);
+    res.send(await put(`/api/vcs/branch/0/signalbild/${updateObj.id}`, updateObj));
+})
+
+app.delete('/signals', async function (req, res) {
+    const updateObj = req.body;
+    console.log(`Deleting ${updateObj.id}`);
+    res.send(await del(`/api/vcs/branch/0/signalbild/${updateObj.id}`));
 })
 
 // Start the server.

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 113.76 113.76"
+   height="113.76"
+   width="113.76"
+   xml:space="preserve"
+   id="svg2"
+   version="1.1"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><g
+     transform="matrix(1.3333333,0,0,-1.3333333,0,113.76)"
+     id="g10"><g
+       transform="scale(0.1)"
+       id="g12"><path
+         id="path14"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 1.41797,1.41797 h 850.391 v 850.391 H 1.41797 Z" /><path
+         id="path16"
+         style="fill:none;stroke:#231f20;stroke-width:2.83500004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 1.41797,1.41797 H 851.809 V 851.809 H 1.41797 V 1.41797" /><path
+         id="path18"
+         style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 339.492,401.484 c 2.344,10.043 3.961,17.926 7.563,27.614 3.742,10.043 8.062,19.726 13.066,29.226 v 0 H 58.2617 l 0.3633,-57.203 280.867,0.363 v 0" /><path
+         id="path20"
+         style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 400.156,511.969 c 9.141,8.242 14.004,13.82 23.508,21.527 9.324,7.703 23.465,17.57 33.152,24.731 v 0 l -0.175,239.113 h -56.309 l -0.176,-285.371 v 0" /><path
+         id="path22"
+         style="fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         d="m 370.563,73.7813 h 114.449 l 0.176,254.5077 v 0 c -0.364,29.602 11.628,59.731 32.617,80.719 22.429,22.43 53.281,34.273 85.027,32.472 v 0 l 178.488,0.36 v 113.723 l -184.933,-0.18 v 0 c -59.004,0.359 -115.879,-22.43 -158.399,-63.32 -43.593,-41.981 -66.527,-99.18 -67.246,-159.805 v 0 L 370.563,73.7813 v 0" /></g></g></svg>
