@@ -1,0 +1,22 @@
+#navSignText {
+  color: white;
+  font-family: "Frutiger";
+}
+
+
+#navSignTextParent {
+}
+
+@font-face {
+  font-family: "Frutiger";
+  src: url("../Fontkits/frutiger_bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Frutiger-Bold";
+  src: url("../Fontkits/frutiger-webfont.woff") fromat("woff");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -22,6 +22,7 @@ function onSelected() {
         // Get svg nr. 201 and write limit on it.
         break;
         case 'navsign':
+        document.getElementById("svg-signal").innerHTML = generateNavBoard(selected);
         // Draw green rect with white borders and specified text in it.
         break;
         default:
@@ -40,6 +41,39 @@ function onSelected() {
         }
         document.getElementById("svg-signal").innerHTML = html;
     }
+}
+function generateNavBoard(signalParams) {
+    return `
+    <svg width="220" height="220">
+      <g>
+        <rect
+          id="outerRect"
+          x="0"
+          y="0"
+          width="220"
+          height="220"
+          fill="green"
+        />
+        <rect
+          id="innerRect"
+          x="10"
+          y="10"
+          rx="14"
+          ry="14"
+          width="200"
+          height="200"
+          fill="green"
+          id="WGWF01"
+          stroke="white"
+          stroke-width="8"
+        />
+      </g>
+      <foreignObject x="35" y="35" width="150" height="150" id="navSignTextParent">
+            <textfield id="navSignText" contenteditable="true">
+                ${signalParams.text} 
+            </textfield>
+      </foreignObject>
+    </svg>`;
 }
 async function loadData() {
     data = await (await fetch('/signals')).json();
