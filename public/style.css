@@ -5,12 +5,22 @@
 
 .speedSignText {
   color: black;
-  font-size: 30px;
+  font-size: 33px;
   font-family: "Frutiger";
 }
 
-.speedSignTextParent {
+.speedSignDiv {
   text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-transform: scale(1,1.2);
+  -moz-transform: scale(1,1.2);
+  -ms-transform: scale(1,1.2);
+  -o-transform: scale(1,1.2);
+  transform: scale(1,1.2);
 }
 
 @font-face {

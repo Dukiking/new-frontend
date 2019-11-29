@@ -70,9 +70,9 @@ function generateNavBoard(signalParams) {
         />
       </g>
       <foreignObject x="35" y="35" width="150" height="150" class="navSignTextParent">
-            <textfield class="navSignText" contenteditable="true">
-                ${signalParams.text} 
-            </textfield>
+        <textfield class="navSignText" contenteditable="true">
+            ${signalParams.text} 
+        </textfield>
       </foreignObject>
     </svg>`;
 }
@@ -81,9 +81,11 @@ function generateSpeedSign(signalParams) {
     <svg width="100" height="100">
       <image x="0" y="0" height="100" width="100"  xlink:href="svg/201.svg" />
       <foreignObject x="0" y="0" width="100" height="100" class="speedSignTextParent">
+        <div class="speedSignDiv">
             <textfield class="speedSignText" contenteditable="true">
                 ${signalParams.text} 
             </textfield>
+        </div>
       </foreignObject>
     </svg>`;
 }
