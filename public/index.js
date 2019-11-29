@@ -1,5 +1,14 @@
 let data = [];
 let selectedId;
+function idToIndex(id) {
+    let index;
+    data.forEach((v, i) => {
+        if(v.id === id) {
+            index = i;
+        }
+    })
+    return index;
+}
 function onSelected() {
     const dropdown = document.getElementById("validationCustom03");
     let signs = {
@@ -15,7 +24,6 @@ function onSelected() {
     document.getElementById("version").innerHTML = selected.version;
     document.getElementById("text").innerHTML = selected.text;
     selectedId = selected.id;
-    console.log(`Selected id ${selectedId} with text ${selected.text}`);
 
     switch(selected.bild) {
         case 'limit':
@@ -45,14 +53,14 @@ function onSelected() {
 }
 function generateNavBoard(signalParams) {
     return `
-    <svg width="220" height="220">
+    <svg width="320" height="320">
       <g>
         <rect
           id="outerRect"
           x="0"
           y="0"
-          width="220"
-          height="220"
+          width="320"
+          height="320"
           fill="green"
         />
         <rect
@@ -61,18 +69,20 @@ function generateNavBoard(signalParams) {
           y="10"
           rx="14"
           ry="14"
-          width="200"
-          height="200"
+          width="300"
+          height="300"
           fill="green"
           id="WGWF01"
           stroke="white"
           stroke-width="8"
         />
       </g>
-      <foreignObject x="35" y="35" width="150" height="150" class="navSignTextParent">
-        <textfield class="navSignText" contenteditable="true">
-            ${signalParams.text} 
-        </textfield>
+      <foreignObject x="35" y="35" width="250" height="250" class="navSignTextParent">
+        <div class="navSignDiv">
+            <textfield class="navSignText" contenteditable="true">
+                ${signalParams.text} 
+            </textfield>
+        </div>
       </foreignObject>
     </svg>`;
 }
@@ -96,6 +106,7 @@ async function loadData() {
     onSelected();
 }
 async function on_submit(event) {
+    const previousSelectedId = selectedId;
     await fetch('/signals', {
         method: 'PUT',
         headers: {
@@ -109,9 +120,11 @@ async function on_submit(event) {
             text: document.getElementById("text").innerHTML,
         }),
     });
+    await loadData();
+    document.getElementById("validationCustom03").value = idToIndex(previousSelectedId);
+    onSelected();
 }
 async function on_delete(event) {
-    console.log('delete is called');
     await fetch('/signals', {
         method: 'DELETE',
         headers: {
@@ -121,9 +134,10 @@ async function on_delete(event) {
             id: selectedId,
         }),
     });
+    await loadData();
 }
 async function on_new(event) {
-    await fetch('/signals', {
+    result = await fetch('/signals', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -135,6 +149,8 @@ async function on_new(event) {
             text: document.getElementById("text").innerHTML,
         }),
     });
+    console.log('result of add is: ' + JSON.stringify(result));
+    await loadData();
 }
 function setDropdown() {
     var catList = document.getElementById("validationCustom03");
