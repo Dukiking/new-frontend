@@ -91,6 +91,7 @@ async function loadData() {
     data = await (await fetch('/signals')).json();
     console.log(JSON.stringify(data));
     setDropdown();
+    onSelected();
 }
 async function on_submit(event) {
     await fetch('/signals', {
