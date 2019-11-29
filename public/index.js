@@ -19,27 +19,28 @@ function onSelected() {
 
     switch(selected.bild) {
         case 'limit':
-        // Get svg nr. 201 and write limit on it.
-        break;
+            document.getElementById("svg-signal").innerHTML = generateSpeedSign(selected);
+            // Get svg nr. 201 and write limit on it.
+            break;
         case 'navsign':
-        document.getElementById("svg-signal").innerHTML = generateNavBoard(selected);
-        // Draw green rect with white borders and specified text in it.
-        break;
+            document.getElementById("svg-signal").innerHTML = generateNavBoard(selected);
+            // Draw green rect with white borders and specified text in it.
+            break;
         default:
-        const lookup = signs[selected.bild];
-        let html = '';
-        if (lookup) {
-            html = `
-            <object
-                id="svg-object"
-                data="svg/${lookup}.svg"
-                type="image/svg+xml">
-            </object>
-            `;
-        } else {
-            console.warn(`Didn't find any graphics specification for ${selected.bild}`)
-        }
-        document.getElementById("svg-signal").innerHTML = html;
+            const lookup = signs[selected.bild];
+            let html = '';
+            if (lookup) {
+                html = `
+                <object
+                    id="svg-object"
+                    data="svg/${lookup}.svg"
+                    type="image/svg+xml">
+                </object>
+                `;
+            } else {
+                console.warn(`Didn't find any graphics specification for ${selected.bild}`)
+            }
+            document.getElementById("svg-signal").innerHTML = html;
     }
 }
 function generateNavBoard(signalParams) {
@@ -68,8 +69,19 @@ function generateNavBoard(signalParams) {
           stroke-width="8"
         />
       </g>
-      <foreignObject x="35" y="35" width="150" height="150" id="navSignTextParent">
-            <textfield id="navSignText" contenteditable="true">
+      <foreignObject x="35" y="35" width="150" height="150" class="navSignTextParent">
+            <textfield class="navSignText" contenteditable="true">
+                ${signalParams.text} 
+            </textfield>
+      </foreignObject>
+    </svg>`;
+}
+function generateSpeedSign(signalParams) {
+    return `
+    <svg width="100" height="100">
+      <image x="0" y="0" height="100" width="100"  xlink:href="svg/201.svg" />
+      <foreignObject x="0" y="0" width="100" height="100" class="speedSignTextParent">
+            <textfield class="speedSignText" contenteditable="true">
                 ${signalParams.text} 
             </textfield>
       </foreignObject>

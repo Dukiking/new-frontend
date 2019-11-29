@@ -1,10 +1,16 @@
-#navSignText {
+.navSignText {
   color: white;
   font-family: "Frutiger";
 }
 
+.speedSignText {
+  color: black;
+  font-size: 30px;
+  font-family: "Frutiger";
+}
 
-#navSignTextParent {
+.speedSignTextParent {
+  text-align: center;
 }
 
 @font-face {
