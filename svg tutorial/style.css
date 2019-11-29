@@ -1,6 +1,7 @@
 .Destination {
   color: white;
   font-family: "Frutiger";
+  font-size: 25px;
 }
 
 @font-face {

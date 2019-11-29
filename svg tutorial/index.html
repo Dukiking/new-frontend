@@ -10,11 +10,11 @@
   </head>
 
   <body>
-    <svg width="500" height="500">
+    <svg width="5000" height="500">
       <g>
         <rect
           id="outerRect"
-          x="10"
+          x="30"
           y="10"
           width="220"
           height="220"
@@ -22,7 +22,7 @@
         />
         <rect
           id="innerRect"
-          x="20"
+          x="40"
           y="20"
           rx="14"
           ry="14"
@@ -34,6 +34,36 @@
           stroke-width="8"
         />
       </g>
+
+      <g>
+        <rect
+          id="outerRect"
+          x="500"
+          y="10"
+          width="220"
+          height="220"
+          fill="blue"
+        />
+        <rect
+          id="innerRect"
+          x="510"
+          y="20"
+          rx="14"
+          ry="14"
+          width="200"
+          height="200"
+          fill="blue"
+          id="WGWF01"
+          stroke="white"
+          stroke-width="8"
+        />
+      </g>
+
+
+
+
+
+
       <g>
           <rect
           class="leftPole"
@@ -41,20 +71,39 @@
           y="230"
           width="50"
           height="220"
+          fill="grey"
           />
+
           <rect
-          class="leftPole"
+          class="RightPole"
+          x="900"
+          y="230"
+          width="50"
+          height="220"
+          fill="grey"
+          />
+
+          <rect
+          class="crossPole"
           x="49"
           y="230"
-          width="220"
+          width="900"
           height="50"
+          fill="grey"
           />
       </g>
-      <foreignObject x="20" y="20" width="200" height="200">
+      <foreignObject x="40" y="20" width="200" height="200">
         <ul class="Destination" contenteditable="true">
           <li style="list-style-type: none;"><a class="item">Zürich</a></li>
         </ul>
       </foreignObject>
+
+      <foreignObject x="540" y="20" width="200" height="200">
+        <ul class="Destination" contenteditable="true">
+          <li style="list-style-type: none;"><a class="item">Bern</a></li>
+        </ul>
+      </foreignObject>
+
     </svg>
     <p>Höhe:</p>
     <textfield id="heights" contenteditable="true">
