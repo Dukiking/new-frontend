@@ -22,20 +22,40 @@
    </head>
    <body>
 
+        <form>
+                <div class="input-group mb-3" id="svg-portal">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Höhe</span>
+                    </div>
+                    <div contenteditable="true" id="höhe" class="col-md-6 form-control"></div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Breite</span>
+                    </div>
+                    <div contentEditable="true" class="col-md-6 form-control" id="breite"></div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Version</span>
+                    </div>
+                    <div contentEditable="true" class="col-md-6 form-control" id="version"></div>
+      
+                </div>
+                <button type="button" class="btn btn-primary" onclick="on_submit()">Save Changes</button>
+                <button type="button" class="btn btn-secondary" onclick="on_new()"> New
+                </button>
+                <button type="button" class="btn btn-danger" onclick="on_delete()"> Delete 
+                </button>
+            </form>
+
 
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="validationCustom03">Category:</label>
             <select class="dropdown form-control form-control-lg" name="category" id="validationCustom03" onchange="onSelected()" required>
-              <option class="dropdown-item" value="">Choose... </option>
-              <option value="Classroom Instruction and Assessment">Classroom Instruction and Assessment</option>
-              <option value="Curriculum Development and Alignment">Curriculum Development and Alignment</option>
-              <option value="District Committee">District Committee</option>
-              <option value="Meeting">Meeting</option>
-              <option value="Other Category">Other Category</option>
-              <option value="Professional Conference">Professional Conference</option>
-              <option value="Professional Workshop / Training">Professional Workshop / Training</option>
-              <option value="Pupil Services">Pupil Services</option>
             </select>
         </div>
       </div>
