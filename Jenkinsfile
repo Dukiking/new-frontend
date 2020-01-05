@@ -6,13 +6,9 @@ node {
 }
 
 	pipeline {
-		agent none
+		agent  { dockerfile true }
 		stages {
-			agent {
-				docker {
-					image ''
-				}
+			stage( ' Test ' ) { steps { sh ' node --version ' sh ' svn --version ' }
 			}
 		}
 	}
-
