@@ -4,9 +4,12 @@ node {
 }
 
 pipeline {
-    agent  { dockerfile true }
+    agent { docker { image 'node:6.3' } }
     stages {
-        stage( ' Test ' ) { steps { sh ' git --version ' }
+        stage('build') {
+            steps {
+                sh 'git --version'
+            }
         }
     }
 }
