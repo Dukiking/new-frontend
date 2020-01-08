@@ -1,5 +1,6 @@
 .navSignText {
   color: white;
+  font-size: 24px;
   font-family: "Frutiger";
 }
 
@@ -16,6 +17,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-transform: scale(1,1.2);
+  -moz-transform: scale(1,1.2);
+  -ms-transform: scale(1,1.2);
+  -o-transform: scale(1,1.2);
+  transform: scale(1,1.2);
+}
+
+.navSignDiv {
   -webkit-transform: scale(1,1.2);
   -moz-transform: scale(1,1.2);
   -ms-transform: scale(1,1.2);
