@@ -1,45 +1,44 @@
-# Quick start
-## Setup
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-1. Git clone.
-2. Run `npm install` inside the directory where `package.json` resides.
-3. Make sure `BACKEND_URL` in the `.env` file points to the url and port through which the backend server is accessible.
-4. Set `BACKEND_USER` and `BACKEND_PW` in the `.env` file to the credentials which were shown to you in the console when first setting up the backend server.  
-5. If you wish to fill the database with test data from a file, put data in JSON format into `db_test_setup.json`, then run `node main.js setup`. For now only type `signalbild` is supported. 
+## Available Scripts
 
+In the project directory, you can run:
 
-## Run
+### `npm start`
 
-1. Make sure database AND backend server from previous project are running.
-2. `node main.js`
-3. The server should run on port `8081`.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-# Development
-## Developing the front-end/actual website
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-Put everything you need for the website into the `public` folder.
+### `npm test`
 
-Getting `signalbild` data onto the frontend: Make a simple `HTTP GET` request onto the server at `/signals`. I suggest using the `fetch` function for this task (See reference).
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Development/extension of the backend
+### `npm run build`
 
-Use functions `get('/api/vcs/my-example-route')` or `post('/api/vcs/my-example-route')` to get or put something into the Neo4J database.
-They are asynchronous so you have to `await` them and use them in a function declared with `async`. Read up on Javascript promises and then async/await if you don't know what any of this means!
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Define new routes (to access from the front-end/website) as follows:
-```
-// Or app.post or any other HTTP method.
-app.get('/my-new-route', async function (req, res) {
-   // Get something from the database and send it to the client (website running in the browser).
-   res.send(await get('/api/vcs/something-i-want-from-db'));
-})
-```
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-# Reference 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Read up on:
-1. Javascript callbacks
-2. Javascript promises
-3. Javascript async/await
+### `npm run eject`
 
-https://javascript.info/fetch
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
