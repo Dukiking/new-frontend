@@ -80,10 +80,10 @@ class SignalViewer extends React.Component<{},{}> {
             </select>
 
             <ButtonGroup>
-                <Button className="btn btn-outline-dark" onClick={this.handleShow}>
+                <Button id="edit" className="btn btn-outline-dark" onClick={this.handleShow}>
                   Edit
                 </Button>
-                <Button className="btn btn-outline-dark" onClick={this.handleShow}>
+                <Button id="add" className="btn btn-outline-dark" onClick={this.handleShow}>
                   ++
                 </Button>
 
