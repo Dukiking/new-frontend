@@ -20,7 +20,7 @@ class SignalEditor extends React.Component<{},{}> {
   public async componentDidMount() {
     console.log('componentDidMount');
     // Load signal list
-    await loadData();
+    //await loadData();
   }
 
   public render() {

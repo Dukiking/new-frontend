@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './SignalViewer.css';
 import SignalEditor from './SignalEditor';
 
+
+
 async function loadData() {
     const data = await (await fetch('/signals')).json();
     console.log(JSON.stringify(data));
@@ -27,7 +29,7 @@ class SignalViewer extends React.Component<{},{}> {
   public async componentDidMount() {
     console.log('componentDidMount');
     // Load signal list
-    await loadData();
+    //await loadData();
   }
 
   public render() {
@@ -47,7 +49,7 @@ class SignalViewer extends React.Component<{},{}> {
               <option value="Professional Workshop / Training">Professional Workshop / Training</option>
               <option value="Pupil Services">Pupil Services</option>
             </select>
-            <SignalEditor />
+
           </div>
         </div>
       </div>
