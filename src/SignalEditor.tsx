@@ -9,10 +9,11 @@ async function loadData() {
 }
 
 interface SignalEditorProps {
-  selectedSignal: Signal;
+  selectedSignal: Signal | null;
+  show: boolean;
 }
 
-class SignalEditor extends React.Component<{},{}> {
+class SignalEditor extends React.Component<SignalEditorProps,{}> {
   constructor(props: {}) {
     super(props);
   }
@@ -56,7 +57,7 @@ class SignalEditor extends React.Component<{},{}> {
             <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
             <label className="form-check-label">Stromanschluss</label>
           </div>
-          <button type="button" className="btn btn-primary">Save Changes</button>
+          <button type="button" className="btn btn-primary">{this.props.selectedSignal ? 'Save Changes' : 'Create'}</button>
           <button type="button" className="btn btn-secondary"> New </button>
           <button type="button" className="btn btn-danger"> Delete </button>
         </form>

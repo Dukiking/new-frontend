@@ -2,24 +2,17 @@ import React from 'react';
 import logo from './logo.svg';
 import './SignalViewer.css';
 import SignalEditor from './SignalEditor';
+import SignalGraphic from './SignalGraphic'
+import { ENGINE_METHOD_ALL } from 'constants';
+import { Signal } from './data';
+import { loadData } from './utils';
 
-async function loadData() {
-    const data = await (await fetch('/signals')).json();
-    console.log(JSON.stringify(data));
+interface SignalViewerState {
+  selectedSignalId: number | null;
+  data: Signal[];
 }
 
-export interface Signal {
-  text: string;
-  kategorie: string;
-  bild: string;
-  version: string;
-}
-
-interface SignalViewerProps {
-  selectedSignal: Signal;
-}
-
-class SignalViewer extends React.Component<{},{}> {
+class SignalViewer extends React.Component<{}, SignalViewerState> {
   constructor(props: {}) {
     super(props);
   }
@@ -27,7 +20,22 @@ class SignalViewer extends React.Component<{},{}> {
   public async componentDidMount() {
     console.log('componentDidMount');
     // Load signal list
-    await loadData();
+    const newData = await loadData();
+    console.log(JSON.stringify(newData));
+
+    // Set selected item as first data item.
+    let newSelect: number | null = null;
+    if (newData.length > 0) {
+        newData.forEach((val: Signal, idx: number) => {
+            if (!newSelect) {
+                newSelect = idx;
+            }
+        });
+    }
+    this.setState({
+      data: newData,
+      selectedSignalId: newSelect,
+    });
   }
 
   public render() {
@@ -47,7 +55,8 @@ class SignalViewer extends React.Component<{},{}> {
               <option value="Professional Workshop / Training">Professional Workshop / Training</option>
               <option value="Pupil Services">Pupil Services</option>
             </select>
-            <SignalEditor />
+            <SignalEditor selectedSignal={} show={}/>
+            <SignalGraphic selectedSignal={this.state.data[this.state.selectedSignalId]} />
           </div>
         </div>
       </div>
