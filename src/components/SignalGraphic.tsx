@@ -1,6 +1,6 @@
 import React from 'react';
-import { Signal } from './data';
-import { loadData } from './utils';
+import { Signal } from '../data';
+import { loadData } from '../utils';
 //import svg2 from '../svg/201.svg';
 
 interface SignalGraphicProps {

@@ -10,10 +10,8 @@ interface PortalViewerState {
 }
 
 class PortalViewer extends React.Component<PortalViewerProps,PortalViewerState> {
-    constructor(props: {}) {
-        this.state = {
-
-        };
+    constructor(props: PortalViewerProps) {
+        super(props);
     }
 
     public render() {

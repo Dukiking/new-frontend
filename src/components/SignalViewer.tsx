@@ -4,8 +4,8 @@ import './SignalViewer.css';
 import SignalEditor from './SignalEditor';
 import SignalGraphic from './SignalGraphic'
 import { ENGINE_METHOD_ALL } from 'constants';
-import { Signal } from './data';
-import { loadData } from './utils';
+import { Signal } from '../data';
+import { loadData } from '../utils';
 
 interface SignalViewerState {
   selectedSignalId: number | null;
@@ -53,27 +53,11 @@ class SignalViewer extends React.Component<{}, SignalViewerState> {
             <div>
               {this.state.selectedSignalId ? (<SignalGraphic signal={this.state.data[this.state.selectedSignalId]} />) : null}
             </div>
-            <PortalViewer />
           </div>
         </div>
       </div>
     );
   }
 }
-// <SignalEditor selectedSignal={} show={}/>
-/*
-  <label>Category:</label>
-  <select className="dropdown form-control form-control-lg" name="category" id="validationCustom03" required>
-    <option className="dropdown-item" value="">Choose... </option>
-    <option value="Classroom Instruction and Assessment">Classroom Instruction and Assessment</option>
-    <option value="Curriculum Development and Alignment">Curriculum Development and Alignment</option>
-    <option value="District Committee">District Committee</option>
-    <option value="Meeting">Meeting</option>
-    <option value="Other Category">Other Category</option>
-    <option value="Professional Conference">Professional Conference</option>
-    <option value="Professional Workshop / Training">Professional Workshop / Training</option>
-    <option value="Pupil Services">Pupil Services</option>
-  </select>
-*/
 
 export default SignalViewer;

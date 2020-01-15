@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SignalViewer from './SignalViewer';
+import SignalViewer from './components/SignalViewer';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<SignalViewer />, document.getElementById('signal-viewer'));
