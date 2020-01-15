@@ -8,6 +8,21 @@ async function loadData() {
     console.log(JSON.stringify(data));
 }
 
+const styles = StyleSheet.create({
+  container: {
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+  },
+  title: {
+    fontSize: 19,
+    fontWeight: 'bold',
+  },
+  activeTitle: {
+    color: 'red',
+  },
+});
+
 interface SignalEditorProps {
   selectedSignal: Signal | null;
   show: boolean;

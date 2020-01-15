@@ -53,6 +53,7 @@ class SignalViewer extends React.Component<{}, SignalViewerState> {
             <div>
               {this.state.selectedSignalId ? (<SignalGraphic signal={this.state.data[this.state.selectedSignalId]} />) : null}
             </div>
+            <PortalViewer />
           </div>
         </div>
       </div>
