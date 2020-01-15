@@ -30,12 +30,10 @@ class SignalViewer extends React.Component<{}, SignalViewerState> {
     // Set selected item as first data item.
     let newSelect: number | null = null;
     if (newData.length > 0) {
-        let counter = 0;
         newData.forEach((val: Signal, idx: number) => {
-            if (!newSelect && counter === 3) {
+            if (!newSelect && val.bild === 'achtung') {
                 newSelect = idx;
             }
-            counter++;
         });
     }
     this.setState({

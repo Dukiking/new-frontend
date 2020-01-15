@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './SignalViewer.css';
 import Signal from './SignalViewer';
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 async function loadData() {
     const data = await (await fetch('/signals')).json();
@@ -23,8 +25,10 @@ class SignalEditor extends React.Component<SignalEditorProps,{}> {
   public async componentDidMount() {
     console.log('componentDidMount');
     // Load signal list
-    await loadData();
+    //await loadData();
   }
+
+
 
   public render() {
     return (
@@ -63,6 +67,8 @@ class SignalEditor extends React.Component<SignalEditorProps,{}> {
           <button type="button" className="btn btn-secondary"> New </button>
           <button type="button" className="btn btn-danger"> Delete </button>
         </form>
+
+
       </div>
     );
   }
