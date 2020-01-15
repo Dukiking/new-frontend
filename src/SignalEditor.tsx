@@ -14,9 +14,11 @@ interface SignalEditorProps {
 }
 
 class SignalEditor extends React.Component<SignalEditorProps,{}> {
+  /*
   constructor(props: {}) {
     super(props);
   }
+  */
 
   public async componentDidMount() {
     console.log('componentDidMount');
