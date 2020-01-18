@@ -1,4 +1,6 @@
 require('dotenv').config();
+
+const sleep = require('sleep-promise');
 const fetch = require('node-fetch');
 const axios = require('axios');
 const fs = require('fs');
@@ -18,7 +20,6 @@ const authObject = {
 
 // Read db setup file.
 const setup = JSON.parse(fs.readFileSync('db_test_setup.json'));
-
 
 async function main() {
     // Authenticate as backend user.
@@ -48,6 +49,7 @@ async function auth() {
         }
     })).json();
     token = result.token;
+    console.log('Set new token: ' + token);
 }
 async function get(route, body) {
     return request('GET', route, body)
@@ -62,7 +64,7 @@ async function put(route, body) {
 async function del(route, body) {
     return request('DELETE', route, body)
 }
-async function request(method, route, body) {
+async function request(method, route, body, retries = 0) {
     const rawBody = await fetch(url(route),  {
         body: body ? JSON.stringify(body) : undefined,
         method,
@@ -79,7 +81,17 @@ async function request(method, route, body) {
         console.log(`Got error: ${e.message}: ${e.stack}`);
         resObj = rawBody;
     }
-    console.log(`Request result: ${JSON.stringify(resObj)}`);
+    //console.log(`Request result: ${JSON.stringify(resObj)}`);
+    //console.log('Message: ' + resObj.message);
+    const strObj = JSON.stringify(resObj);
+    console.log('Response: ' + strObj);
+    if (strObj.length < 500 && strObj.includes('Authentication failure')) {
+        if (retries === 3) throw Error('Authentication failed after 3 retries');
+        if (retries > 0) await sleep(retries * 1000); // Exponential retry backoff
+        console.log('Token expired or invalid, retrying');
+        await auth();
+        return await request(method, route, body, ++retries);
+    }
     return resObj
 }
 main();
